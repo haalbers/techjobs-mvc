@@ -36,8 +36,11 @@
 
     <hr />
 
+
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
     <div th:fragment="results">
+        <h3 th:if="${not #lists.isEmpty(jobs)}" th:text="${jobs.size()} + ' result(s)'"></h3>
+        <h3 th:if="${#lists.isEmpty(jobs)}" th:text="'No results found.'"></h3>
         <table th:each="job : ${jobs}" th:class="job-listing">
             <tr th:each="item : ${job}">
                 <td th:text="${item.key}"></td>
